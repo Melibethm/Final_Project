@@ -2,9 +2,9 @@ name: Cypress test
 on: push
 jobs: 
   cypress-run:
-  #environment Lenox ex:windows or mac 
+ 
     runs-on: ubuntu-22.04
-  #run parrallel
+ 
     strategy: 
       fail-fast: false 
       matrix:
