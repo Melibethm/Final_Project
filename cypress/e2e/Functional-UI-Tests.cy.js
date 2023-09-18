@@ -100,7 +100,7 @@ describe('Log out', () => {
 })
 
 describe('Error Handling', () => {
-  it.only ('should display error message', () => {
+  it ('should display error message', () => {
     cy.visit ('https://thinking-tester-contact-list.herokuapp.com')
     cy.get('#email').type('Happyemail@noemail.com').should('have.value', 'Happyemail@noemail.com')
     cy.get ("#password").type("Password000").should('have.value', 'Password000')

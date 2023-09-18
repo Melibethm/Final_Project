@@ -1,4 +1,4 @@
-describe('Viewport test', ()=> {
+describe('User Interface responsivness', ()=> {
     it ('should test standard mobile viewport', ()=> {
         cy.viewport (375, 667) //standard mobile viewport size
         cy.visit ('https://thinking-tester-contact-list.herokuapp.com')
