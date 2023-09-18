@@ -1,0 +1,18 @@
+name: Owasp intregration
+
+on: [push]
+
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+    name: Scan the webapplication
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: ZAP Scan
+        uses: zaproxy/action-baseline@v0.9.0
+        with:
+          
+          target: 'https://juice-shop.herokuapp.com/#/search'
+          rules_file_name: '.zap/rules.tsv'
+          cmd_options: '-a'
