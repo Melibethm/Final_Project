@@ -116,23 +116,6 @@ describe('API Tests', () => {
         });
       });
 
-
-      it('Delete contact', () => {
-        //will fail because I ran the test and deleted the contact already
-
-        cy.request({
-          method: 'DELETE',
-          url: 'https://thinking-tester-contact-list.herokuapp.com/contacts/65076c5932d06a0013fb83a7',
-          headers: {
-            Authorization: 'Bearer ' + tokens,
-          },
-        }).then((response) => {
-          
-          cy.log('API Response:', response);
-          
-        });
-      });
-
       it('Get user profile', () => {
         cy.request({
           method: 'GET',
