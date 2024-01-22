@@ -20,5 +20,6 @@ jobs:
     - name: Run ZAP Baseline Scan
       uses: zaproxy/action-baseline@v0.4.0
       with:
-          target:  https://juice-shop.herokuapp.com/#
-          policy: path/to/your/zap/policy
+        token: ${{ secrets.GITHUB_TOKEN }}
+        docker_name: 'owasp/zap2docker-stable'  # Use the stable docker image
+        target: 'https://juice-shop.herokuapp.com/#'  # The target URL for the scan
