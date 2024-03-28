@@ -1,0 +1,29 @@
+name: OWASP ZAP Security Scan
+
+on:
+  push:
+    branches:
+      - main  # adjust branch name as needed
+
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Download and extract ZAP
+        run: |
+          wget -q -O /tmp/zap.tar.gz https://github.com/zaproxy/zaproxy/releases/download/v2.10.0/ZAP_2.10.0_Linux.tar.gz
+          mkdir -p /tmp/zap
+          tar -xzf /tmp/zap.tar.gz -C /tmp/zap --strip-components=1
+
+      - name: Run ZAP security scan
+        run: |
+          /tmp/zap/zap.sh -cmd -quickurl "https://example.com" -quickprogress -quickout /tmp/zap-report.html
+
+      - name: Upload ZAP report
+        uses: actions/upload-artifact@v2
+        with:
+          name: zap-report
+          path: /tmp/zap-report.html
