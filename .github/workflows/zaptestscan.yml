@@ -6,11 +6,17 @@ jobs:
   Security_Testing_Setup:
     runs-on: ubuntu-latest
     steps:
+      - name: Remove conflicting packages
+        run: |
+          sudo apt-get remove containerd -y
+
+      - name: Update package cache
+        run: sudo apt-get update
+
       - name: Install Docker
         run: |
-          sudo apt-get update
           sudo apt-get install docker.io -y
-          
+
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.11.0
         with:
